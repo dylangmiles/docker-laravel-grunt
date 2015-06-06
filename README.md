@@ -1,2 +1,2 @@
-# docker-node-php
-A docker image that supports node and php for running grunt-phpunit.
+# docker-laravel grunt
+A docker image that for running grunt during laravel development.
