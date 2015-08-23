@@ -7,6 +7,7 @@ ENV NPM_VERSION 2.11.0
 
 RUN apt-get update -y \
     && apt-get install -y \
+      php5-curl \
     	php5-cli \
     	php5-mongo \
     	php5-mssql \
