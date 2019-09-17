@@ -2,8 +2,8 @@ FROM debian:jessie
 
 MAINTAINER "Dylan Miles" <dylan.g.miles@gmail.com>
 
-ENV NODE_VERSION 0.12.4
-ENV NPM_VERSION 2.11.0
+ENV NODE_VERSION 8.16.1
+ENV NPM_VERSION 6.10.3
 
 RUN apt-get update -y \
     && apt-get install -y \
@@ -19,12 +19,18 @@ RUN apt-get update -y \
     	php5-mcrypt \
     	php5-tidy \
     	curl \
-    	bzip2 \
-    && curl -sL https://deb.nodesource.com/setup | bash - \
-    && apt-get install -y nodejs \
-	&& npm install -g grunt-cli \
-	&& npm install -g phantomjs \
-	&& npm cache clear \
+    	bzip2 
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - 
+
+RUN apt-get install -y nodejs
+
+RUN npm install -g grunt-cli 
+
+RUN npm install -g phantomjs-prebuilt --unsafe-perm
+
+RUN npm install -g sass
+
+RUN npm cache clear --force \
     && apt-get remove --purge curl -y \
     && apt-get clean
 
