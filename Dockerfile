@@ -55,10 +55,11 @@ RUN apt-get install -y \
 RUN git clone https://github.com/ariya/phantomjs.git
 
 RUN cd phantomjs \
-    && ls -lah \
     && git checkout 2.1.1 \
     && git submodule init \
-    && git submodule update \
+    && git submodule update
+
+RUN cd phantomjs \
     && python build.py
 
 RUN npm cache clear --force \
